@@ -1,0 +1,57 @@
+@import 'C:/Users/igork/UIUX/frontend/movies/node_modules/bootstrap/scss/bootstrap.scss';
+
+.footer {
+    background-color: #b6d8fa;
+}
+
+.header {
+    background-color: #5ca7f2;
+}
+
+.card-body {
+    background-color: #bcdaf7;
+    color: #4198ef;
+}
+
+.card {
+    border: 3px solid #5ca7f2;
+    border-radius: 2px;
+}
+
+.card-img, .card-img-top {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+body {
+    background-image: linear-gradient(#5ca7f2, #b6d8fa);
+
+}
+
+.card-text {
+    color: #75a7d9;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+}
+
+@include media-breakpoint-down(lg) {
+    .card-text {
+        font-size: 1rem;
+    }
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #5ca7f2;
+    border-color: transparent;
+    color: #0a559f;
+} 
+
+.nav-tabs {
+    border-width: 0px;
+}
+
+.no-decoration {
+    text-decoration: none;
+}
