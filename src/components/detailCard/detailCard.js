@@ -1,20 +1,21 @@
 import {useQuery} from "react-query";
 import axios from "axios";
 import CommentSection from "@/components/commentSection/commentSection";
+import {useRouter } from "next/navigation";
 
 async function fetchFilm(id = 1) {
     const response = await axios.get(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}&with_images=true`);
-
     return response.data.data;
 }
 
 export default function DetailCard(props) { 
+    const router = useRouter();
     const id = props.id;
     const { data, isLoading, isError } = useQuery(
         [id, 'film'], 
         () =>  fetchFilm(id)
     );
-    console.log({ data, isLoading, isError });
+
     if (isError) {
         return <h1>Error</h1>
     }
@@ -31,6 +32,9 @@ export default function DetailCard(props) {
 
     return (
         <div class="container-detail">
+        <button onClick={() => router.back()} type="button" style={
+            {"margin-top": '10px'}
+        } class="btn btn-dark">Назад</button>
         <div class="card-detail">
             <div class="card-body-detail">
                 <h3 class="card-title">{movie.title}</h3>
@@ -74,7 +78,7 @@ export default function DetailCard(props) {
                                 </tbody>
                             </table>
                         </div>
-                        <CommentSection></CommentSection>
+                        <CommentSection movieId={movie.id}></CommentSection>
                     </div>
                 </div>
             </div>

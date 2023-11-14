@@ -10,12 +10,11 @@ export default function Pagination(props) {
     } else {
         let i = currentPage - 2;
 
-        while (i <=  (currentPage + 2) && i <= maxPages) {
+        while (i <= (parseInt(currentPage) + 2) && i <= maxPages) {
             pages.push(i);
             i++;
         }
     }
-
     return (
         <nav aria-label="Page navigation example">
             <ul className="pagination">

@@ -1,6 +1,6 @@
 'use client';
 
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {useQuery} from "react-query";
 
 import Pagination from "@/components/pagination/pagination";
@@ -13,8 +13,13 @@ async function fetchFilms(pagen = 1) {
     return response.data.data;
 }
 
+function getLastSessionPage() {
+    const page = localStorage.getItem('page');
+    return page ?? 1;
+}
+
 export default function Grid(props) {
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(getLastSessionPage());
     const { data, isLoading, isError } = useQuery(
         [page, 'films'], 
         () =>  fetchFilms(page),
@@ -22,6 +27,10 @@ export default function Grid(props) {
             keepPreviousData: true
         }
     );
+
+    useEffect(() => {
+        localStorage.setItem('page', page);
+    });
 
     if (isError) {
         return <h1>Error</h1>
@@ -35,10 +44,9 @@ export default function Grid(props) {
         return <h1>No data</h1>
     }
 
-
     const movies = data.movies;
     const maxPages = Math.ceil(data.movie_count / data.limit);
-
+    console.log(page, maxPages);
     return (
         <div className="container main pb-5 pt-5">
             <div className="container overflow-hidden w-md-50">
