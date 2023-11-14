@@ -18,16 +18,16 @@ export default function Pagination(props) {
 
     return (
         <nav aria-label="Page navigation example">
-            <ul class="pagination">
-            <li class="page-item"><a class={"no-decoration page-link" + (currentPage != 1 ? "" : " disabled")} onClick={() => setPage(currentPage-1)}>Previous</a></li>
+            <ul className="pagination">
+            <li className="page-item"><a className={"no-decoration page-link" + (currentPage != 1 ? "" : " disabled")} onClick={() => setPage(currentPage-1)}>Previous</a></li>
                 {
                     pages.map(
                         (page) => (
-                            <li class="page-item"><a class={"no-decoration page-link" + (currentPage != page ? "" : " active")} onClick={() => setPage(page)}>{page}</a></li>
+                            <li className="page-item"><a className={"no-decoration page-link" + (currentPage != page ? "" : " active")} onClick={() => setPage(page)}>{page}</a></li>
                         )
                     )
                 }
-            <li class="page-item"><a class={"no-decoration page-link" + (currentPage != maxPages ? "" : " disabled")} onClick={() => setPage(currentPage+1)}>Next</a></li>
+            <li className="page-item"><a className={"no-decoration page-link" + (currentPage != maxPages ? "" : " disabled")} onClick={() => setPage(currentPage+1)}>Next</a></li>
             </ul>
         </nav>
     )

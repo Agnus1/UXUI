@@ -1,42 +1,57 @@
 @import 'C:/Users/igork/UIUX/frontend/movies/node_modules/bootstrap/scss/bootstrap.scss';
 
+$primary-text: black;
+$secondary-text: grey;
+$primary-background:rgb(235, 232, 232);
+$secondary-background: rgb(248, 248, 248);
+
 * {
     line-height: 1.33333333333;
     font-family: helvetica neue,Helvetica,Arial,sans-serif;
 }
 
+body {
+    background-image: $primary-background;
+}
+
+
+
 .footer {
-    background-color: #b6d8fa;
+    background-color: $primary-background;
 }
 
 .header {
-    background-color: #5ca7f2;
+    background-color: $primary-background;
 }
 
-.card-body {
-    background-color: #bcdaf7;
-    color: #4198ef;
-    min-height: 0;
-}
-
-.card {
-    border: 3px solid #5ca7f2;
-    border-radius: 2px;
+.card-item {
+    @extend .card;
+    box-sizing: border-box;
+    border: 4px solid transparent;
+    z-index: 19;
+    overflow: hidden;
+    border-radius: 15px;
     max-height: 40rem;
 }
 
-.card-img, .card-img-top {
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
+.card-item-body {
+    @extend .card-body;
+    color: $primary-text;
+    border: 1px solid black;
+    border-top: none;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    background-color: $secondary-background;
+    min-height: 0;
 }
 
-body {
-    background-image: linear-gradient(#5ca7f2, #b6d8fa);
-
+.card-item-title {
+    @extend .card-title;
 }
 
-.card-text {
-    color: #75a7d9;
+.card-item-text {
+    @extend .card-text;
+    color: $secondary-text;
     text-overflow: ellipsis;
     overflow: hidden;
     display: -webkit-box;
@@ -44,20 +59,29 @@ body {
     -webkit-box-orient: vertical;
 }
 
+.card-item-img, .card-item-img-top {
+    @extend .card-img, .card-img-top;
+    border-radius: 0px;
+}
+
+.card-detail {
+    @extend .card;
+    background-color: transparent;
+    border: none;
+}
+
 @include media-breakpoint-down(lg) {
-    .card-text {
+    .card-item-text {
         font-size: 1rem;
     }
 
-    .card-title {
+    .card-item-title {
         font-size: 1.5rem;
     }
 }
 
 .nav-tabs .nav-link.active {
-    background-color: #5ca7f2;
     border-color: transparent;
-    color: #0a559f;
 } 
 
 .nav-tabs {
@@ -73,4 +97,29 @@ body {
 	width: fit-content;
 	margin: auto;
 	padding: 10px;
+}
+
+.card-detail {
+    @extend .card;
+}
+
+.container-detail {
+    @extend .container;
+    background-color: $secondary-background;
+}
+
+.card-body-detail {
+    @extend .card-body;
+    padding: 1%;
+}
+
+.row-detail {
+    @extend .row;
+    padding-top: 1%;
+}
+
+@include media-breakpoint-down(xl) {
+    .row-detail {
+        display: block;
+    }
 }

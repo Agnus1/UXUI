@@ -6,12 +6,13 @@ export default function Layout({ children }) {
         <html lang="en">
             <head>
                 <title>Главная</title>
-                <link href="./public/css/styles.css" rel="stylesheet"/>
             </head>
-            <body>
-            <Header></Header>
-            {children}
-            <Footer></Footer>
+            <body className="container-fluid">
+            {/* <Header></Header> */}
+            <main>
+                {children}
+            </main>
+            {/* <Footer></Footer> */}
             </body>
         </html>
     )
