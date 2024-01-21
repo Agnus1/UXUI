@@ -1,18 +1,17 @@
 import Header from "../header/header";
-import Footer from "../footer/footer";
 
 export default function Layout({ children }) {
     return (
         <html lang="en">
             <head>
                 <title>Главная</title>
+                <link rel="icon" type="image/x-icon" href="/film-svgrepo-com.svg"/>
             </head>
-            <body className="container-fluid">
-            {/* <Header></Header> */}
-            <main>
-                {children}
-            </main>
-            {/* <Footer></Footer> */}
+            <body>
+                <Header></Header>
+                <main className="container-fluid pb-5 pt-5">
+                    {children}
+                </main>
             </body>
         </html>
     )

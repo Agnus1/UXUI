@@ -5,7 +5,6 @@ import CommentItem from "../commentItem/commentItem";
 
 function getComments(movieId) {
     const comments = localStorage.getItem(movieId);
-
     return comments ? JSON.parse(comments) : [];
 }
 
@@ -15,7 +14,8 @@ export default function CommentSection(props) {
 
         const form = e.target;
         const comment = (new FormData(form)).get("comment");
-
+        form.reset();
+        
         if (comment == '') return;
         setComments([comment, ...comments]);
     }
@@ -37,10 +37,11 @@ export default function CommentSection(props) {
             <div className="coment-bottom bg-white p-2 px-4">
                 <CommentForm handleSubmit={handleSubmit}></CommentForm>
                 {
-                    comments &&
+                    comments.length != 0 ?
                     comments.map(
                         (comment, index) => <CommentItem id={index} comment={comment} deleteFunct={commentDelete}/>
-                    )
+                    ) :
+                    (<span className="card-body-text-detail">Тут пока ничего нет...</span>)
                 }
             </div>
         </div>

@@ -1,9 +1,16 @@
-@import 'C:/Users/igork/UIUX/frontend/movies/node_modules/bootstrap/scss/bootstrap.scss';
-
 $primary-text: black;
 $secondary-text: grey;
 $primary-background:rgb(235, 232, 232);
 $secondary-background: rgb(248, 248, 248);
+
+$pagination-color: $primary-text;
+$pagination-bg: $secondary-background;
+$pagination-hover-color: $pagination-bg;
+$pagination-hover-bg: lighten($pagination-color, 20%);
+$pagination-active-bg: lighten($pagination-color, 20%);
+$pagination-active-border-color: $pagination-active-bg;
+
+@import 'C:/Users/igork/UIUX/frontend/movies/node_modules/bootstrap/scss/bootstrap.scss';
 
 * {
     line-height: 1.33333333333;
@@ -14,14 +21,16 @@ body {
     background-image: $primary-background;
 }
 
-
-
 .footer {
     background-color: $primary-background;
 }
 
 .header {
     background-color: $primary-background;
+}
+
+.card-title {
+    color: $primary-text;
 }
 
 .card-item {
@@ -36,17 +45,20 @@ body {
 
 .card-item-body {
     @extend .card-body;
-    color: $primary-text;
-    border: 1px solid black;
+    border: none;
     border-top: none;
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
     background-color: $secondary-background;
     min-height: 0;
 }
-
+ 
 .card-item-title {
     @extend .card-title;
+}
+
+.card-body-text-detail {
+    color: $secondary-text;
 }
 
 .card-item-text {
